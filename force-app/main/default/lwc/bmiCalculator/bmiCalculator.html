@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="BMI Calculator">
+        <div class="slds-m-around_medium">
+            <p><strong>Please Click the Button which Unit do you want to Calculator BMI</strong></p><br>
+            <lightning-button variant="brand" label="US Unit" title="US Unit" onclick={usunithandler} class="slds-m-left_x-small"></lightning-button>
+            <lightning-button variant="brand" label="Metric Unit" title="Metric Unit" onclick={metricunithandler} class="slds-m-left_x-small"></lightning-button>
+            <br>
+        <template if:true={isselectunit}>
+            <lightning-input type="number" label="Enter your Age" placeholder="Please enter the age in years" onchange={agehandler}></lightning-input>
+            <br>
+            <lightning-radio-group name="gendertype"
+                                   label="Select the Gender"
+                                   options={options}
+                                   value={value}
+                                   type="radio"
+                                   onchange={genderhandler}>
+            </lightning-radio-group>
+            <br>
+            <lightning-input type="number" label="Enter the Height" placeholder={calcplace} onchange={heighthandler}></lightning-input>
+            <br>
+            <lightning-input type="number" label="Enter the Weight" placeholder={calcplace} onchange={weighthandler}></lightning-input>
+            <br>
+            <lightning-button variant="brand" label="Submit" title="Submit" onclick={handlesubmit} class="slds-m-left_x-small"></lightning-button>
+            <lightning-button variant="destructive" label="Know BMI" title="Know BMI" onclick={handleknow} class="slds-m-left_x-small"></lightning-button>
+            <lightning-button variant="neutral" label="Reset" title="Reset" onclick={handlereset} class="slds-m-left_x-small"></lightning-button>
+            <template if:true={issubmit}>
+                <p><strong>The Calculated BMI is: {result}</strong></p>
+            </template>
+        </template>
+        </div>
+    </lightning-card>
+</template>
